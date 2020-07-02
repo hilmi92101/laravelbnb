@@ -1916,8 +1916,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  mounted: function mounted() {//console.log('Component mounted.')
+  },
+  props: {
+    "title": String,
+    "itemContent": String,
+    "price": Number
   }
 });
 
@@ -1942,8 +1946,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  mounted: function mounted() {//console.log('Component mounted.')
   },
   components: {
     BookableListItem: _BookableListItem__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -37674,20 +37677,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h3", [_vm._v(_vm._s(_vm.title))]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.itemContent))])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h3", [_vm._v("title")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Content")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37711,7 +37707,23 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [_c("BookableListItem"), _vm._v(" "), _c("BookableListItem")],
+    [
+      _c("BookableListItem", {
+        attrs: {
+          title: "Cheap Villa",
+          "item-content": "A very cheap villa 1",
+          price: 200
+        }
+      }),
+      _vm._v(" "),
+      _c("BookableListItem", {
+        attrs: {
+          title: "Cheap Villa 2",
+          "item-content": "A very cheap villa 2",
+          price: 300
+        }
+      })
+    ],
     1
   )
 }

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <BookableListItem></BookableListItem>
-        <BookableListItem></BookableListItem>
+        <BookableListItem title="Cheap Villa" item-content="A very cheap villa 1" :price="200"></BookableListItem>
+        <BookableListItem title="Cheap Villa 2" item-content="A very cheap villa 2" :price="300"></BookableListItem>
     </div>
 </template>
 
@@ -11,7 +11,7 @@
 
     export default {
         mounted() {
-            console.log('Component mounted.')
+            //console.log('Component mounted.')
         },
         components: {
         	BookableListItem
