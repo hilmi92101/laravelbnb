@@ -1916,7 +1916,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {//console.log('Component mounted.')
+  mounted: function mounted() {
+    console.log('Component mounted.');
   },
   props: {
     "title": String,
@@ -1946,7 +1947,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {//console.log('Component mounted.')
+  beforeCreate: function beforeCreate() {
+    console.log('before create');
+  },
+  created: function created() {
+    console.log('created');
+  },
+  beforeMount: function beforeMount() {
+    console.log('before mount');
+  },
+  mounted: function mounted() {
+    console.log('Component mounted');
+  },
+  beforeDestroy: function beforeDestroy() {
+    console.log('before destroy');
+  },
+  destroyed: function destroyed() {
+    console.log('destroyed');
   },
   components: {
     BookableListItem: _BookableListItem__WEBPACK_IMPORTED_MODULE_0__["default"]

@@ -7,14 +7,19 @@
 
 <script>
     export default {
+        
         mounted() {
-            //console.log('Component mounted.')
+            console.log('Component mounted.')
         },
+
+
 
         props: {
             "title": String,
             "itemContent": String,
             "price": Number,
-        }
+        },
+
+
     }
 </script>
