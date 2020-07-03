@@ -1,11 +1,13 @@
 <template>
     <div>
         <BookableListItem 
+        	v-if="bookable1 !== null"
         	:title="bookable1.title" 
         	:item-content="bookable1.itemContent" 
         	:price="bookable1.price">
     	</BookableListItem>
         <BookableListItem 
+        	v-if="bookable2 !== null"
         	:title="bookable2.title" 
         	:item-content="bookable2.itemContent" 
         	:price="bookable2.price">
@@ -24,7 +26,7 @@
 
     		return {
 
-    			bookable1: {
+    			/*bookable1: {
     				title: "Cheap Villa 1",
     				itemContent: "Cheap Villa 1",
     				price: 200,
@@ -36,7 +38,10 @@
     				itemContent: "Cheap Villa 2",
     				price: 500,
 
-    			},
+    			},*/
+
+    			bookable1: null,
+    			bookable2: null,
     		}
     	},
 
@@ -49,8 +54,19 @@
 
     		setTimeout(() => {
 
-				this.bookable1.title = 'Hello World';
-				this.bookable2.title = 'Hello World 2';
+				this.bookable1 = {
+    				title: "Cheap Villa 1",
+    				itemContent: "Cheap Villa 1",
+    				price: 200,
+
+    			}
+
+    			this.bookable2  = {
+    				title: "Cheap Villa 2",
+    				itemContent: "Cheap Villa 2",
+    				price: 500,
+
+    			}
 
     		}, 1000);
     	},
