@@ -1915,6 +1915,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Component mounted.');
@@ -1945,13 +1946,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      bookable1: {
+        title: "Cheap Villa 1",
+        itemContent: "Cheap Villa 1",
+        price: 200
+      },
+      bookable2: {
+        title: "Cheap Villa 2",
+        itemContent: "Cheap Villa 2",
+        price: 500
+      }
+    };
+  },
   beforeCreate: function beforeCreate() {
     console.log('before create');
   },
   created: function created() {
+    var _this = this;
+
     console.log('created');
+    setTimeout(function () {
+      _this.bookable1.title = 'Hello World';
+      _this.bookable2.title = 'Hello World 2';
+    }, 1000);
   },
   beforeMount: function beforeMount() {
     console.log('before mount');
@@ -37697,7 +37727,9 @@ var render = function() {
   return _c("div", [
     _c("h3", [_vm._v(_vm._s(_vm.title))]),
     _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.itemContent))])
+    _c("p", [_vm._v(_vm._s(_vm.itemContent))]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.price))])
   ])
 }
 var staticRenderFns = []
@@ -37727,17 +37759,17 @@ var render = function() {
     [
       _c("BookableListItem", {
         attrs: {
-          title: "Cheap Villa",
-          "item-content": "A very cheap villa 1",
-          price: 200
+          title: _vm.bookable1.title,
+          "item-content": _vm.bookable1.itemContent,
+          price: _vm.bookable1.price
         }
       }),
       _vm._v(" "),
       _c("BookableListItem", {
         attrs: {
-          title: "Cheap Villa 2",
-          "item-content": "A very cheap villa 2",
-          price: 300
+          title: _vm.bookable2.title,
+          "item-content": _vm.bookable2.itemContent,
+          price: _vm.bookable2.price
         }
       })
     ],
