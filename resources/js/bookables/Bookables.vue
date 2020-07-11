@@ -1,5 +1,6 @@
 <template>
     <div>
+        Rows is {{ rows }}
         <div v-if="loading">Loading</div>
         <div v-else>
             <BookableListItem 
@@ -29,9 +30,21 @@
     		return {
 
     			bookables: null,
-                loading: false
+                loading: false,
+                columns: 3,
     		}
     	},
+
+        computed: {
+
+            rows() {
+
+                return this.bookables === null 
+                ? 0
+                : Math.ceil(this.bookables.length / this.columns)
+            }
+
+        },
 
     	created() {
 
@@ -51,6 +64,36 @@
                     {
                         title: "Cheap Villa 2",
                         itemContent: "Cheap Villa 2",
+                        price: 500,
+
+                    },
+                    {
+                        title: "Cheap Villa 3",
+                        itemContent: "Cheap Villa 3",
+                        price: 500,
+
+                    },
+                    {
+                        title: "Cheap Villa 4",
+                        itemContent: "Cheap Villa 4",
+                        price: 500,
+
+                    },
+                    {
+                        title: "Cheap Villa 5",
+                        itemContent: "Cheap Villa 5",
+                        price: 500,
+
+                    },
+                    {
+                        title: "Cheap Villa 6",
+                        itemContent: "Cheap Villa 6",
+                        price: 500,
+
+                    },
+                    {
+                        title: "Cheap Villa 7",
+                        itemContent: "Cheap Villa 7",
                         price: 500,
 
                     },

@@ -1,8 +1,15 @@
 <template>
     <div>
-        <h3>{{ title }}</h3>
-        <p>{{ itemContent }}</p>
-        <p>{{ price }}</p>
+
+        <div class="card" style="width: 18rem;">
+            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+            <div class="card-body">
+                <h5 class="card-title">{{ title }}</h5>
+                <p class="card-text">{{ itemContent }}</p>
+                <p class="card-text">{{ price }}</p>
+                <a href="#" class="btn btn-primary">Details</a>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -12,7 +19,6 @@
         mounted() {
             //console.log('Component mounted.')
         },
-
 
 
         props: {

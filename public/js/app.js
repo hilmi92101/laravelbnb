@@ -1916,6 +1916,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {//console.log('Component mounted.')
   },
@@ -1958,13 +1965,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       bookables: null,
-      loading: false
+      loading: false,
+      columns: 3
     };
+  },
+  computed: {
+    rows: function rows() {
+      return this.bookables === null ? 0 : Math.ceil(this.bookables.length / this.columns);
+    }
   },
   created: function created() {
     var _this = this;
@@ -1978,6 +1992,26 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         title: "Cheap Villa 2",
         itemContent: "Cheap Villa 2",
+        price: 500
+      }, {
+        title: "Cheap Villa 3",
+        itemContent: "Cheap Villa 3",
+        price: 500
+      }, {
+        title: "Cheap Villa 4",
+        itemContent: "Cheap Villa 4",
+        price: 500
+      }, {
+        title: "Cheap Villa 5",
+        itemContent: "Cheap Villa 5",
+        price: 500
+      }, {
+        title: "Cheap Villa 6",
+        itemContent: "Cheap Villa 6",
+        price: 500
+      }, {
+        title: "Cheap Villa 7",
+        itemContent: "Cheap Villa 7",
         price: 500
       }];
       _this.loading = false;
@@ -37713,11 +37747,21 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", [_vm._v(_vm._s(_vm.title))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.itemContent))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.price))])
+    _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
+        _vm._v(" "),
+        _c("p", { staticClass: "card-text" }, [
+          _vm._v(_vm._s(_vm.itemContent))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.price))]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+          _vm._v("Details")
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -37743,6 +37787,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _vm._v("\n    Rows is " + _vm._s(_vm.rows) + "\n    "),
     _vm.loading
       ? _c("div", [_vm._v("Loading")])
       : _c(
