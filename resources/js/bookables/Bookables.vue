@@ -1,17 +1,19 @@
 <template>
     <div>
-        <BookableListItem 
-        	v-if="bookable1 !== null"
-        	:title="bookable1.title" 
-        	:item-content="bookable1.itemContent" 
-        	:price="bookable1.price">
-    	</BookableListItem>
-        <BookableListItem 
-        	v-if="bookable2 !== null"
-        	:title="bookable2.title" 
-        	:item-content="bookable2.itemContent" 
-        	:price="bookable2.price">
-    	</BookableListItem>
+        <div v-if="loading">Loading</div>
+        <div v-else>
+            <BookableListItem 
+
+                v-for="(bookable, index) in bookables"
+                :key="index"
+
+                :title="bookable.title" 
+                :item-content="bookable.itemContent" 
+                :price="bookable.price"
+            >
+            </BookableListItem>
+        </div>
+        
         
     </div>
 </template>
@@ -26,66 +28,42 @@
 
     		return {
 
-    			/*bookable1: {
-    				title: "Cheap Villa 1",
-    				itemContent: "Cheap Villa 1",
-    				price: 200,
-
-    			},
-
-    			bookable2: {
-    				title: "Cheap Villa 2",
-    				itemContent: "Cheap Villa 2",
-    				price: 500,
-
-    			},*/
-
-    			bookable1: null,
-    			bookable2: null,
+    			bookables: null,
+                loading: false
     		}
     	},
 
-    	beforeCreate() {
-    		console.log('before create');
-    	},
-
     	created() {
-    		console.log('created');
+
+            this.loading = true;
 
     		setTimeout(() => {
 
-				this.bookable1 = {
-    				title: "Cheap Villa 1",
-    				itemContent: "Cheap Villa 1",
-    				price: 200,
+				this.bookables = [
 
-    			}
+                    {
 
-    			this.bookable2  = {
-    				title: "Cheap Villa 2",
-    				itemContent: "Cheap Villa 2",
-    				price: 500,
+                        title: "Cheap Villa 1",
+                        itemContent: "Cheap Villa 1",
+                        price: 200,
 
-    			}
+                    },
+                    {
+                        title: "Cheap Villa 2",
+                        itemContent: "Cheap Villa 2",
+                        price: 500,
+
+                    },
+
+
+                ];
+
+                this.loading = false;
 
     		}, 1000);
     	},
 
-    	beforeMount() {
-    		console.log('before mount');
-    	},
-
-        mounted() {
-            console.log('Component mounted')
-        },
-
-        beforeDestroy() {
-            console.log('before destroy')
-        },
-
-        destroyed() {
-            console.log('destroyed')
-        },
+    	
 
         components: {
         	BookableListItem
