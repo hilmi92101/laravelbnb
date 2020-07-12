@@ -1966,6 +1966,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1978,6 +2001,14 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     rows: function rows() {
       return this.bookables === null ? 0 : Math.ceil(this.bookables.length / this.columns);
+    }
+  },
+  methods: {
+    bookablesInRow: function bookablesInRow(row) {
+      return this.bookables.slice((row - 1) * this.columns, row * this.columns);
+    },
+    placeholderInRow: function placeholderInRow(row) {
+      return this.columns - this.bookablesInRow(row).length;
     }
   },
   created: function created() {
@@ -37792,17 +37823,37 @@ var render = function() {
       ? _c("div", [_vm._v("Loading")])
       : _c(
           "div",
-          _vm._l(_vm.bookables, function(bookable, index) {
-            return _c("BookableListItem", {
-              key: index,
-              attrs: {
-                title: bookable.title,
-                "item-content": bookable.itemContent,
-                price: bookable.price
-              }
-            })
+          _vm._l(_vm.rows, function(row) {
+            return _c(
+              "div",
+              { key: "row" + row, staticClass: "row mb-4" },
+              _vm._l(_vm.bookablesInRow(row), function(bookable, column) {
+                return _c(
+                  "div",
+                  { key: "row" + row + column, staticClass: "col" },
+                  [
+                    _c("BookableListItem", {
+                      attrs: {
+                        title: bookable.title,
+                        "item-content": bookable.itemContent,
+                        price: bookable.price
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._l(_vm.placeholderInRow(row), function(p) {
+                      return _c("div", {
+                        key: "placeholderInRow" + row + p,
+                        staticClass: "col"
+                      })
+                    })
+                  ],
+                  2
+                )
+              }),
+              0
+            )
           }),
-          1
+          0
         )
   ])
 }
