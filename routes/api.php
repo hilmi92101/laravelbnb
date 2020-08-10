@@ -36,6 +36,7 @@ Route::get('bookable/{id}/{optional?}', function (Request $request, $id, $option
     		'data' => $optional
 
     	]);
+    	
     } else {
 		return Bookable::findOrFail($id);
     }
