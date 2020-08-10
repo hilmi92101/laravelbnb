@@ -25,3 +25,20 @@ Route::get('bookables', function (Request $request) {
 	return Bookable::all();
 
 });
+
+Route::get('bookable/{id}/{optional?}', function (Request $request, $id, $optional = null) {
+    
+    if(strlen($optional) > 0){
+
+    	return json_encode([
+
+    		'status' => 'Optional',
+    		'data' => $optional
+
+    	]);
+    } else {
+		return Bookable::findOrFail($id);
+    }
+	
+
+});
