@@ -1928,7 +1928,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     "title": String,
-    "itemContent": String,
+    "itemDescription": String,
     "price": Number
   }
 });
@@ -2014,53 +2014,13 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    var self = this;
     this.loading = true;
-    var p = new Promise(function (resolve, reject) {
-      console.log(resolve);
-      console.log(reject);
-      setTimeout(function () {
-        return resolve("Hello");
-      }, 3000);
-    }).then(function (result) {
-      return console.log("1. Success ".concat(result));
-    }).then(function (result) {
-      return console.log("2. Success ".concat(result));
-    })["catch"](function (result) {
-      return console.log("Error ".concat(result));
-    });
-    console.log(p);
-    setTimeout(function () {
-      _this.bookables = [{
-        title: "Cheap Villa 1",
-        itemContent: "Cheap Villa 1",
-        price: 200
-      }, {
-        title: "Cheap Villa 2",
-        itemContent: "Cheap Villa 2",
-        price: 500
-      }, {
-        title: "Cheap Villa 3",
-        itemContent: "Cheap Villa 3",
-        price: 500
-      }, {
-        title: "Cheap Villa 4",
-        itemContent: "Cheap Villa 4",
-        price: 500
-      }, {
-        title: "Cheap Villa 5",
-        itemContent: "Cheap Villa 5",
-        price: 500
-      }, {
-        title: "Cheap Villa 6",
-        itemContent: "Cheap Villa 6",
-        price: 500
-      }, {
-        title: "Cheap Villa 7",
-        itemContent: "Cheap Villa 7",
-        price: 500
-      }];
+    var request = axios.get("/api/bookables").then(function (response) {
+      //console.log(response.data);
+      _this.bookables = response.data;
       _this.loading = false;
-    }, 1000);
+    }); //console.log(request);
   },
   components: {
     BookableListItem: _BookableListItem__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -37797,7 +37757,7 @@ var render = function() {
         _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [
-          _vm._v(_vm._s(_vm.itemContent))
+          _vm._v(_vm._s(_vm.itemDescription))
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.price))]),
@@ -37849,7 +37809,7 @@ var render = function() {
                     _c("BookableListItem", {
                       attrs: {
                         title: bookable.title,
-                        "item-content": bookable.itemContent,
+                        "item-description": bookable.description,
                         price: bookable.price
                       }
                     }),

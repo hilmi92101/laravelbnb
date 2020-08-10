@@ -5,7 +5,7 @@
             <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
             <div class="card-body">
                 <h5 class="card-title">{{ title }}</h5>
-                <p class="card-text">{{ itemContent }}</p>
+                <p class="card-text">{{ itemDescription }}</p>
                 <p class="card-text">{{ price }}</p>
                 <a href="#" class="btn btn-primary">Details</a>
             </div>
@@ -23,7 +23,7 @@
 
         props: {
             "title": String,
-            "itemContent": String,
+            "itemDescription": String,
             "price": Number,
         },
 

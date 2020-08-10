@@ -18,7 +18,7 @@
                         
 
                         :title="bookable.title" 
-                        :item-content="bookable.itemContent" 
+                        :item-description="bookable.description" 
                         :price="bookable.price"
                     >
                     </BookableListItem>
@@ -85,74 +85,22 @@
 
     	created() {
 
+            var self = this;
+
             this.loading = true;
 
-            const p = new Promise((resolve, reject) => {
+            const request = axios.get("/api/bookables")
+            .then(response  => {
+                
+                //console.log(response.data);
 
-                console.log(resolve);
-                console.log(reject);
-
-                setTimeout(() => resolve("Hello"), 3000);
-            }).then(result => console.log(`1. Success ${result}`))
-            .then(result => console.log(`2. Success ${result}`))
-            .catch(result => console.log(`Error ${result}`)); 
-
-            console.log(p);
-
-    		setTimeout(() => {
-
-				this.bookables = [
-
-                    {
-
-                        title: "Cheap Villa 1",
-                        itemContent: "Cheap Villa 1",
-                        price: 200,
-
-                    },
-                    {
-                        title: "Cheap Villa 2",
-                        itemContent: "Cheap Villa 2",
-                        price: 500,
-
-                    },
-                    {
-                        title: "Cheap Villa 3",
-                        itemContent: "Cheap Villa 3",
-                        price: 500,
-
-                    },
-                    {
-                        title: "Cheap Villa 4",
-                        itemContent: "Cheap Villa 4",
-                        price: 500,
-
-                    },
-                    {
-                        title: "Cheap Villa 5",
-                        itemContent: "Cheap Villa 5",
-                        price: 500,
-
-                    },
-                    {
-                        title: "Cheap Villa 6",
-                        itemContent: "Cheap Villa 6",
-                        price: 500,
-
-                    },
-                    {
-                        title: "Cheap Villa 7",
-                        itemContent: "Cheap Villa 7",
-                        price: 500,
-
-                    },
-
-
-                ];
-
+                this.bookables = response.data;
                 this.loading = false;
+            });
 
-    		}, 1000);
+            //console.log(request);
+
+    		
     	},
 
     	
