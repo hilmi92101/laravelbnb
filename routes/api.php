@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 
 use App\Bookable;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,20 +27,36 @@ Route::get('bookables', function (Request $request) {
 
 });
 
-Route::get('bookable/{id}/{optional?}', function (Request $request, $id, $optional = null) {
+Route::get('bookable/{id}/', function (Request $request, $id) {
+    
+
+    try {
+        return Bookable::findOrFail($id);
+        
+    } catch(ModelNotFoundException $e) {
+        return json_encode([
+
+            'status' => false,
+
+        ]);
+    }
+	
+    
+});
+
+/*Route::get('bookable/{id}/{optional?}', function (Request $request, $id, $optional = null) {
     
     if(strlen($optional) > 0){
 
-    	return json_encode([
+        return json_encode([
 
-    		'status' => 'Optional',
-    		'data' => $optional
+            'status' => 'Optional',
+            'data' => $optional
 
-    	]);
-    	
+        ]);
+        
     } else {
-		return Bookable::findOrFail($id);
+        return Bookable::findOrFail($id);
     }
-	
-
-});
+    
+});*/
