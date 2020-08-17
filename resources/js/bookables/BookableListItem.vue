@@ -3,10 +3,14 @@
     <div class="card w-100">
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-body">
-            <h5 class="card-title">{{ title }}</h5>
-            <p class="card-text">{{ description }}</p>
+            <router-link :to="{ name:  'bookable', params: { id: id} }">
+                <h5 class="card-title">{{ title }}</h5>
+            </router-link>
+            <router-link :to="{ name:  'bookable', params: { id } }">
+                <p class="card-text">{{ description }}</p>
+            </router-link> 
             <p class="card-text">{{ id }}</p>
-            <a href="#" class="btn btn-primary">Details</a>
+            
         </div>
     </div>
 </template>
