@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 
-use App\Bookable;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,29 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('bookables', function (Request $request) {
-    
-
-	return Bookable::all();
-
-});
-
-Route::get('bookable/{id}/', function (Request $request, $id) {
-    
-
-    try {
-        return Bookable::findOrFail($id);
-        
-    } catch(ModelNotFoundException $e) {
-        return json_encode([
-
-            'status' => false,
-
-        ]);
-    }
-	
-    
-});
+Route::get('bookables', 'Api\BookableController@index');
+Route::get('bookable/{id}', 'Api\BookableController@show');
 
 /*Route::get('bookable/{id}/{optional?}', function (Request $request, $id, $optional = null) {
     
