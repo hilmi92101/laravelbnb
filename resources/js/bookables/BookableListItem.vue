@@ -4,8 +4,8 @@
         <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
         <div class="card-body">
             <h5 class="card-title">{{ title }}</h5>
-            <p class="card-text">{{ itemDescription }}</p>
-            <p class="card-text">{{ price }}</p>
+            <p class="card-text">{{ description }}</p>
+            <p class="card-text">{{ id }}</p>
             <a href="#" class="btn btn-primary">Details</a>
         </div>
     </div>
@@ -21,8 +21,8 @@
 
         props: {
             "title": String,
-            "itemDescription": String,
-            "price": Number,
+            "description": String,
+            "id": Number,
         },
 
 

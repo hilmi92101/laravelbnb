@@ -15,11 +15,8 @@
                 >
                     <BookableListItem 
 
+                        v-bind="bookable"
                         
-
-                        :title="bookable.title" 
-                        :item-description="bookable.description" 
-                        :price="bookable.price"
                     >
                     </BookableListItem>
 

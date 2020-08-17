@@ -1962,8 +1962,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     "title": String,
-    "itemDescription": String,
-    "price": Number
+    "description": String,
+    "id": Number
   }
 });
 
@@ -1979,9 +1979,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BookableListItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookableListItem */ "./resources/js/bookables/BookableListItem.vue");
-//
-//
-//
 //
 //
 //
@@ -37722,11 +37719,9 @@ var render = function() {
     _c("div", { staticClass: "card-body" }, [
       _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
       _vm._v(" "),
-      _c("p", { staticClass: "card-text" }, [
-        _vm._v(_vm._s(_vm.itemDescription))
-      ]),
+      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.description))]),
       _vm._v(" "),
-      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.price))]),
+      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.id))]),
       _vm._v(" "),
       _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
         _vm._v("Details")
@@ -37775,13 +37770,10 @@ var render = function() {
                       staticClass: "col d-flex align-items-stretch"
                     },
                     [
-                      _c("BookableListItem", {
-                        attrs: {
-                          title: bookable.title,
-                          "item-description": bookable.description,
-                          price: bookable.price
-                        }
-                      })
+                      _c(
+                        "BookableListItem",
+                        _vm._b({}, "BookableListItem", bookable, false)
+                      )
                     ],
                     1
                   )
