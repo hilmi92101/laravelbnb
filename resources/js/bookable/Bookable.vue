@@ -1,6 +1,17 @@
 <template>
-    <div>
-        sss
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2>{{ bookable == null ? '' : bookable.title }}</h2>
+                    <hr>
+                    <article>{{ bookable == null ? '' : bookable.description }}</article>
+                </div>      
+            </div>
+        </div>
+        <div class="col-md-4">
+            availability & prices
+        </div>
     </div>
     
 </template>
