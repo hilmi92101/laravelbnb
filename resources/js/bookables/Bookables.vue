@@ -9,7 +9,7 @@
                 :key="'row' + row"
             >
                 <div 
-                    class="col"
+                    class="col d-flex align-items-stretch"
                     v-for="(bookable, column) in bookablesInRow(row)"
                     :key="'row' + row + column"
                 >
@@ -23,22 +23,12 @@
                     >
                     </BookableListItem>
 
-                    <div 
-
-                        class="col"
-                        v-for="p in placeholderInRow(row)"
-                        :key="'placeholderInRow' + row + p"
-
-                    >
-                        
-                    </div>
+                    
                 </div>
+
+                <div class="col" v-for="p in placeholderInRow(row)" :key="'placeholderInRow' + row + p"></div>
             </div>
-                
-            
         </div>
-        
-        
     </div>
 </template>
 
@@ -95,6 +85,7 @@
                 //console.log(response.data);
 
                 this.bookables = response.data;
+                //this.bookables.push({title:'x', description:'y'});
                 this.loading = false;
             });
 

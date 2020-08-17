@@ -1921,8 +1921,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {//console.log('Component mounted.')
   },
@@ -1945,16 +1943,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BookableListItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookableListItem */ "./resources/js/bookables/BookableListItem.vue");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2018,7 +2006,8 @@ __webpack_require__.r(__webpack_exports__);
     this.loading = true;
     var request = axios.get("/api/bookables").then(function (response) {
       //console.log(response.data);
-      _this.bookables = response.data;
+      _this.bookables = response.data; //this.bookables.push({title:'x', description:'y'});
+
       _this.loading = false;
     }); //console.log(request);
   },
@@ -37751,20 +37740,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "card", staticStyle: { width: "18rem" } }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
-        _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [
-          _vm._v(_vm._s(_vm.itemDescription))
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.price))]),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-          _vm._v("Details")
-        ])
+  return _c("div", { staticClass: "card w-100" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text" }, [
+        _vm._v(_vm._s(_vm.itemDescription))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.price))]),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+        _vm._v("Details")
       ])
     ])
   ])
@@ -37801,30 +37788,35 @@ var render = function() {
             return _c(
               "div",
               { key: "row" + row, staticClass: "row mb-4" },
-              _vm._l(_vm.bookablesInRow(row), function(bookable, column) {
-                return _c(
-                  "div",
-                  { key: "row" + row + column, staticClass: "col" },
-                  [
-                    _c("BookableListItem", {
-                      attrs: {
-                        title: bookable.title,
-                        "item-description": bookable.description,
-                        price: bookable.price
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm._l(_vm.placeholderInRow(row), function(p) {
-                      return _c("div", {
-                        key: "placeholderInRow" + row + p,
-                        staticClass: "col"
+              [
+                _vm._l(_vm.bookablesInRow(row), function(bookable, column) {
+                  return _c(
+                    "div",
+                    {
+                      key: "row" + row + column,
+                      staticClass: "col d-flex align-items-stretch"
+                    },
+                    [
+                      _c("BookableListItem", {
+                        attrs: {
+                          title: bookable.title,
+                          "item-description": bookable.description,
+                          price: bookable.price
+                        }
                       })
-                    })
-                  ],
-                  2
-                )
-              }),
-              0
+                    ],
+                    1
+                  )
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.placeholderInRow(row), function(p) {
+                  return _c("div", {
+                    key: "placeholderInRow" + row + p,
+                    staticClass: "col"
+                  })
+                })
+              ],
+              2
             )
           }),
           0
