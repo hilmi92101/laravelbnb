@@ -29,7 +29,7 @@
                 
                 console.log(response.data);
 
-                this.bookable = response.data;
+                this.bookable = response.data.data;
             });
         },
 

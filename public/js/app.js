@@ -1934,7 +1934,7 @@ __webpack_require__.r(__webpack_exports__);
     var id = this.$route.params.id;
     var request = axios.get("/api/bookable/".concat(id)).then(function (response) {
       console.log(response.data);
-      _this.bookable = response.data;
+      _this.bookable = response.data.data;
     });
   },
   data: function data() {
@@ -2054,7 +2054,7 @@ __webpack_require__.r(__webpack_exports__);
     this.loading = true;
     var request = axios.get("/api/bookables").then(function (response) {
       //console.log(response.data);
-      _this.bookables = response.data; //this.bookables.push({title:'x', description:'y'});
+      _this.bookables = response.data.data; //this.bookables.push({title:'x', description:'y'});
 
       _this.loading = false;
     }); //console.log(request);

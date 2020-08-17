@@ -81,7 +81,7 @@
                 
                 //console.log(response.data);
 
-                this.bookables = response.data;
+                this.bookables = response.data.data;
                 //this.bookables.push({title:'x', description:'y'});
                 this.loading = false;
             });
