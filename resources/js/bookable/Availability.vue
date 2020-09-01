@@ -10,6 +10,7 @@
                     name="from" 
                     class="form-control form-control-sm" 
                     placeholder="Start Date"
+                    v-model="from"
                 >
 
             </div>
@@ -20,6 +21,7 @@
                     name="to" 
                     class="form-control form-control-sm" 
                     placeholder="To Date"
+                    v-model="to"
                 >
 
             </div>
@@ -40,7 +42,8 @@
         data() {
 
             return {
-                test: null,
+                from: null,
+                to: null,
             }
         },
 
