@@ -11,6 +11,7 @@
                     class="form-control form-control-sm" 
                     placeholder="Start Date"
                     v-model="from"
+                    @keyup.enter="check"
                 >
 
             </div>
@@ -22,11 +23,12 @@
                     class="form-control form-control-sm" 
                     placeholder="To Date"
                     v-model="to"
+                    @keyup.enter="check"
                 >
 
             </div>
 
-            <button class="btn btn-secondary btn-block">Check!</button>
+            <button class="btn btn-secondary btn-block" @click="check">Check!</button>
         </div>
     </div>
     
@@ -45,6 +47,15 @@
                 from: null,
                 to: null,
             }
+        },
+
+        methods: {
+
+            check() {
+
+                alert('i will check');
+
+            },
         },
 
 
