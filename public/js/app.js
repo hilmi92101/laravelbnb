@@ -1949,12 +1949,37 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       from: null,
-      to: null
+      to: null,
+      loading: false,
+      status: null,
+      errors: null
     };
   },
   methods: {
     check: function check() {
-      alert('i will check');
+      var _this = this;
+
+      this.loading = true;
+      this.errors = true;
+      var id = this.$route.params.id;
+      var from = '2020-11-06';
+      var to = '2020-11-07';
+      var url = "/api/bookables/".concat(id, "/availability?from=").concat(from, "&to=").concat(to); //console.log(url);
+
+      var self = this;
+      var request = axios.get(url).then(function (response) {
+        _this.status = response.status;
+        _this.loading = false;
+        console.log(response.data);
+      })["catch"](function (error) {
+        if (422 === error.response.status) {
+          _this.errors = error.response.data.errors;
+        }
+
+        _this.status = error.response.status;
+      }).then(function () {
+        _this.loading = false;
+      });
     }
   }
 });
@@ -1997,10 +2022,10 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    console.log(this.$route.params.id);
+    //console.log(this.$route.params.id);
     var id = this.$route.params.id;
     var request = axios.get("/api/bookable/".concat(id)).then(function (response) {
-      console.log(response.data);
+      //console.log(response.data);
       _this.bookable = response.data.data;
     });
   },
@@ -38500,6 +38525,7 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-secondary btn-block",
+          attrs: { disable: _vm.loading },
           on: { click: _vm.check }
         },
         [_vm._v("Check!")]

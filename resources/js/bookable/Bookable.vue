@@ -30,14 +30,14 @@
         },
 
         created() {
-            console.log(this.$route.params.id);
+            //console.log(this.$route.params.id);
 
             const id = this.$route.params.id;
 
             const request = axios.get(`/api/bookable/${id}`)
             .then(response  => {
                 
-                console.log(response.data);
+                //console.log(response.data);
 
                 this.bookable = response.data.data;
             });

@@ -28,7 +28,7 @@
 
             </div>
 
-            <button class="btn btn-secondary btn-block" @click="check">Check!</button>
+            <button class="btn btn-secondary btn-block" @click="check" :disable="loading">Check!</button>
         </div>
     </div>
     
@@ -46,6 +46,9 @@
             return {
                 from: null,
                 to: null,
+                loading: false,
+                status: null,
+                errors: null,
             }
         },
 
@@ -53,8 +56,39 @@
 
             check() {
 
-                alert('i will check');
+                this.loading = true;
+                this.errors = true;
+                
 
+                var id = this.$route.params.id;
+                var from = '2020-11-06';
+                var to = '2020-11-07';
+                var url = `/api/bookables/${id}/availability?from=${from}&to=${to}`;
+
+                //console.log(url);
+
+                var self = this;
+
+                const request = axios.get(url)
+                .then(response  => {
+                    
+                    this.status = response.status;
+                    this.loading = false;
+                    console.log(response.data);
+
+                }).catch(error => {
+
+                    if(422 === error.response.status){
+                        this.errors = error.response.data.errors;
+                    }
+
+                    this.status = error.response.status;
+
+                }).then(()  => {
+                    
+                    this.loading = false;
+
+                });
             },
         },
 
